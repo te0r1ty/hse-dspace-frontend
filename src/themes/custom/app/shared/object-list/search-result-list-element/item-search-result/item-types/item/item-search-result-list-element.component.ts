@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
 
 import { Context } from '../../../../../../../../../app/core/shared/context.model';
 import { ViewMode } from '../../../../../../../../../app/core/shared/view-mode.model';
-import { ThemedBadgesComponent } from '../../../../../../../../../app/shared/object-collection/shared/badges/themed-badges.component';
+// import { ThemedBadgesComponent } from '../../../../../../../../../app/shared/object-collection/shared/badges/themed-badges.component';
 import { ItemSearchResult } from '../../../../../../../../../app/shared/object-collection/shared/item-search-result.model';
 import { listableObjectComponent } from '../../../../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
 import { ItemSearchResultListElementComponent as BaseComponent } from '../../../../../../../../../app/shared/object-list/search-result-list-element/item-search-result/item-types/item/item-search-result-list-element.component';
@@ -27,7 +27,7 @@ import { ThemedThumbnailComponent } from '../../../../../../../../../app/thumbna
     AsyncPipe,
     NgClass,
     RouterLink,
-    ThemedBadgesComponent,
+    // ThemedBadgesComponent,
     ThemedThumbnailComponent,
     TruncatableComponent,
     TruncatablePartComponent,

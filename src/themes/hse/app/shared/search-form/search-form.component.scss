@@ -8,6 +8,10 @@
   max-width: var(--ds-search-form-scope-max-width);
 }
 
-.form-bg-color{
+.form-control:focus{
+  outline: none;
+}
+.form-custom-style{
+  font-size: 2rem;
   background-color: white;
 }

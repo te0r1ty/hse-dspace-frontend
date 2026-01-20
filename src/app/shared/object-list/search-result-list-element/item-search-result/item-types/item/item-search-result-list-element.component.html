@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row border border-dark rounded py-1 custom-style">
   @if (showThumbnails) {
     <div class="col-3 col-md-2">
       @if (linkType !== linkTypes.None) {
@@ -17,11 +17,13 @@
     </div>
   }
   <div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'">
+    <!--
     <div class="d-flex">
       @if (showLabel) {
         <ds-badges [object]="dso" [context]="context" [showAccessStatus]="true"></ds-badges>
       }
     </div>
+    -->
 
     @if (object !== undefined && object !== null) {
       <ds-truncatable [id]="dso.id">
