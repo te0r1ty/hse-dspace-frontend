@@ -11,7 +11,7 @@
     --ds-header-height: 90px;
   }
 
-  --ds-banner-text-background: rgba(0, 0, 0, 0.58);
+  --ds-banner-text-background: rgba(0, 0, 0, 0);
   --ds-banner-background-gradient-width: 300px;
 
   --ds-header-navbar-border-bottom-height: 5px;
@@ -25,5 +25,7 @@
 
   --ds-item-page-img-field-default-inline-height: 24px;
   --ds-item-page-img-field-ror-inline-height: var(--ds-item-page-img-field-default-inline-height);
+  --ds-navbar-link-color-hover: #e61e3c;
+  --ds-home-news-link-hover-color: #e61e3c;
 }
 
