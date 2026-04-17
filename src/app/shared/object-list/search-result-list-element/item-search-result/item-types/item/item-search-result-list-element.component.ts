@@ -7,6 +7,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { Item } from '../../../../../../core/shared/item.model';
 import { ViewMode } from '../../../../../../core/shared/view-mode.model';
@@ -16,7 +17,7 @@ import { ThemedThumbnailComponent } from '../../../../../../thumbnail/themed-thu
 import { ItemSearchResult } from '../../../../../object-collection/shared/item-search-result.model';
 import { listableObjectComponent } from '../../../../../object-collection/shared/listable-object/listable-object.decorator';
 import { TruncatableComponent } from '../../../../../truncatable/truncatable.component';
-import { TruncatablePartComponent } from '../../../../../truncatable/truncatable-part/truncatable-part.component';
+// import { TruncatablePartComponent } from '../../../../../truncatable/truncatable-part/truncatable-part.component';
 import { SearchResultListElementComponent } from '../../../search-result-list-element.component';
 
 @listableObjectComponent('PublicationSearchResult', ViewMode.ListElement)
@@ -29,10 +30,9 @@ import { SearchResultListElementComponent } from '../../../search-result-list-el
     AsyncPipe,
     NgClass,
     RouterLink,
-    // ThemedBadgesComponent,
     ThemedThumbnailComponent,
+    TranslateModule,
     TruncatableComponent,
-    TruncatablePartComponent,
   ],
 })
 /**

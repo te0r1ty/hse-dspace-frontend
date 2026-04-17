@@ -15,6 +15,7 @@ COPY package.json package-lock.json ./
 RUN npm install
 
 ADD . /app/
+ENV NODE_OPTIONS=--max-old-space-size=4096
 RUN npm run build:prod
 
 FROM node:20-alpine

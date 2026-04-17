@@ -15,7 +15,7 @@ import { EagerThemeModule as HseEagerThemeModule } from './hse/eager-theme.modul
   imports: [
     // DSpaceEagerThemeModule,
     // CustomEagerThemeModule,
-    HseEagerThemeModule
+    HseEagerThemeModule,
   ],
 })
 export class EagerThemesModule {

@@ -1,10 +1,48 @@
 @font-face {
-  font-family: "HSE Sans";
-  src: url("/assets/fonts/HSESans-Black.otf") format("opentype"),
-  url("/assets/fonts/HSESans-Bold.otf") format("opentype"),
-  url("/assets/fonts/HSESans-Italic.otf") format("opentype"),
-  url("/assets/fonts/HSESans-Regular.otf") format("opentype"),
-  url("/assets/fonts/HSESans-SemiBold.otf") format("opentype"),
-  url("/assets/fonts/HSESans-Thin.otf") format("opentype");
-
+	font-family: 'HSE Slab';
+	src: url(https://www.hse.ru/f/src/global/fonts/HSESlab-Regular.woff2) format("woff2"), url(https://www.hse.ru/f/src/global/fonts/HSESlab-Regular.woff) format("woff");
+	font-weight: 400;
+	font-style: normal
+}
+@font-face {
+	font-family: 'HSE Slab';
+	src: url(https://www.hse.ru/f/src/global/fonts/HSESlab-Black.woff2) format("woff2"), url(https://www.hse.ru/f/src/global/fonts/HSESlab-Black.woff) format("woff");
+	font-weight: 900;
+	font-style: normal
+}
+@font-face {
+	font-family: 'HSE Slab';
+	src: url(https://www.hse.ru/f/src/global/fonts/HSESlab-Italic.woff2) format("woff2"), url(https://www.hse.ru/f/src/global/fonts/HSESlab-Italic.woff) format("woff");
+	font-weight: 400;
+	font-style: italic
+}
+@font-face {
+	font-family: 'HSE Sans';
+	src: url(https://www.hse.ru/f/src/global/fonts/HSESans-Thin.woff2) format("woff2"), url(https://www.hse.ru/f/src/global/fonts/HSESans-Thin.woff) format("woff");
+	font-weight: 100;
+	font-style: normal
+}
+@font-face {
+	font-family: 'HSE Sans';
+	src: url(https://www.hse.ru/f/src/global/fonts/HSESans-Regular.woff2) format("woff2"), url(https://www.hse.ru/f/src/global/fonts/HSESans-Regular.woff) format("woff");
+	font-weight: 400;
+	font-style: normal
+}
+@font-face {
+	font-family: 'HSE Sans';
+	src: url(https://www.hse.ru/f/src/global/fonts/HSESans-SemiBold.woff2) format("woff2"), url(https://www.hse.ru/f/src/global/fonts/HSESans-SemiBold.woff) format("woff");
+	font-weight: 600;
+	font-style: normal
+}
+@font-face {
+	font-family: 'HSE Sans';
+	src: url(https://www.hse.ru/f/src/global/fonts/HSESans-Bold.woff2) format("woff2"), url(https://www.hse.ru/f/src/global/fonts/HSESans-Bold.woff) format("woff");
+	font-weight: 700;
+	font-style: normal
+}
+@font-face {
+	font-family: 'HSE Sans';
+	src: url(https://www.hse.ru/f/src/global/fonts/HSESans-Black.woff2) format("woff2"), url(https://www.hse.ru/f/src/global/fonts/HSESans-Black.woff) format("woff");
+	font-weight: 900;
+	font-style: normal
 }

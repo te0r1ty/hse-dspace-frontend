@@ -1,4 +1,4 @@
-<div class="row border border-dark rounded py-1 custom-style">
+<div class="row  rounded py-2 custom-style">
   @if (showThumbnails) {
     <div class="col-3 col-md-2">
       @if (linkType !== linkTypes.None) {
@@ -17,6 +17,7 @@
     </div>
   }
   <div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'">
+    <!--TODO change list item here-->
     <!--
     <div class="d-flex">
       @if (showLabel) {
@@ -29,15 +30,34 @@
       <ds-truncatable [id]="dso.id">
         @if (linkType !== linkTypes.None) {
           <a [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'" [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
-            [routerLink]="[itemPageRoute]" class="lead item-list-title dont-break-out"
+            [routerLink]="[itemPageRoute]" class="lead item-list-title dont-break-out fs-4 fw-bold"
           [innerHTML]="dsoTitle" role="link" tabindex="0"></a>
         }
         @if (linkType === linkTypes.None) {
-          <span class="lead item-list-title dont-break-out"
+          <span class="lead item-list-title dont-break-out fs-4 fw-bold"
           [innerHTML]="dsoTitle"></span>
         }
-        <span class="text-muted">
-          <ds-truncatable-part [id]="dso.id" [minLines]="1">
+        <div class="d-flex justify-content-between my-3">
+          <div class="fs-5" style="flex: 2 2 0">
+            @if (dso.allMetadata(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length > 0) {
+              <div class="item-list-authors">
+                <b>Авторы: <br></b>
+                @for (author of allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).slice(0,3); track author; let last = $last) {
+                  <span>
+                    <span [innerHTML]="author"><span [innerHTML]="author"></span></span>
+                    @if (!last) {
+                      <span>, <br></span>
+                    }
+                    @else if (allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length > 3) {
+                      <br>
+                      <span [innerHTML]="'item.page.authors.others' | translate"></span>
+                    }
+                  </span>
+                }
+
+              </div>
+            }
+            <!--
             @if (dso.firstMetadataValue('dc.publisher') || dso.firstMetadataValue('dc.date.issued')) {
               (@if (dso.firstMetadataValue('dc.publisher')) {
               <span class="item-list-publisher" [innerHTML]="firstMetadataValue('dc.publisher')"></span>
@@ -49,25 +69,38 @@
               <span class="item-list-date" [innerHTML]="firstMetadataValue('dc.date.issued')"></span>
               })
             }
-            @if (dso.allMetadata(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length > 0) {
-              <span class="item-list-authors">
-                @for (author of allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']); track author; let last = $last) {
-                  <span>
-                    <span [innerHTML]="author"><span [innerHTML]="author"></span></span>
-                    @if (!last) {
-                      <span>; </span>
-                    }
-                  </span>
-                }
-              </span>
+            -->
+
+          </div>
+          <div style="flex: 1 1 0;">
+            @if (dso.firstMetadataValue('dc.date.issued')) {
+              <div>
+                <b>Дата: <br></b>
+                <span [innerHTML]="firstMetadataValue('dc.date.issued').replaceAll('-', '.')"></span>
+              </div>
             }
-          </ds-truncatable-part>
-        </span>
-        @if (dso.firstMetadataValue('dc.description.abstract')) {
-          <div class="item-list-abstract">
-            <ds-truncatable-part [id]="dso.id" [minLines]="3"><span
-            [innerHTML]="firstMetadataValue('dc.description.abstract')"></span>
-          </ds-truncatable-part>
+          </div>
+          <div style="flex: 5 5 0;">
+            @if (dso.firstMetadataValue('dc.description.abstract')) {
+              <div>
+                <b>Аннотация: <br></b>
+                <span [innerHTML]="firstMetadataValue('dc.description.abstract').slice(0,1000)">
+                </span>
+                @if (firstMetadataValue('dc.description.abstract').length > 1000) {
+                  <span>...</span>
+                }
+              </div>
+            }
+          </div>
+        </div>
+        @if (dso.firstMetadataValue('dc.subject')) {
+          <div class="item-list-abstract my-2">
+              @for (subject of allMetadataValues('dc.subject').slice(0,5); track subject) {
+                <span
+                  class="px-3 py-1 text-xs font-medium me-2 fw-bold"
+                  style="color:#0050cf;background-color: #e5edfa;"
+                  [innerHTML]="subject"></span>
+              }
         </div>
       }
     </ds-truncatable>

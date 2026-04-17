@@ -4,6 +4,7 @@ import {
 } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { Context } from '../../../../../../../../../app/core/shared/context.model';
 import { ViewMode } from '../../../../../../../../../app/core/shared/view-mode.model';
@@ -12,8 +13,8 @@ import { ItemSearchResult } from '../../../../../../../../../app/shared/object-c
 import { listableObjectComponent } from '../../../../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
 import { ItemSearchResultListElementComponent as BaseComponent } from '../../../../../../../../../app/shared/object-list/search-result-list-element/item-search-result/item-types/item/item-search-result-list-element.component';
 import { TruncatableComponent } from '../../../../../../../../../app/shared/truncatable/truncatable.component';
-import { TruncatablePartComponent } from '../../../../../../../../../app/shared/truncatable/truncatable-part/truncatable-part.component';
 import { ThemedThumbnailComponent } from '../../../../../../../../../app/thumbnail/themed-thumbnail.component';
+// import { TruncatablePartComponent } from '../../../../../../../../../app/shared/truncatable/truncatable-part/truncatable-part.component';
 
 @listableObjectComponent('PublicationSearchResult', ViewMode.ListElement, Context.Any, 'custom')
 @listableObjectComponent(ItemSearchResult, ViewMode.ListElement, Context.Any, 'custom')
@@ -27,10 +28,9 @@ import { ThemedThumbnailComponent } from '../../../../../../../../../app/thumbna
     AsyncPipe,
     NgClass,
     RouterLink,
-    // ThemedBadgesComponent,
     ThemedThumbnailComponent,
+    TranslateModule,
     TruncatableComponent,
-    TruncatablePartComponent,
   ],
 })
 export class ItemSearchResultListElementComponent extends BaseComponent {

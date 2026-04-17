@@ -21,6 +21,23 @@
       margin: calc(var(--ds-footer-padding) * -1);
     }
 
+    .hse-footer-wrap {
+      display: flex;
+
+      .hse-footer-column{
+        flex: 1 1 0;
+
+        .hse-footer-link{
+          color: #ffffff99;
+
+          &:hover{
+            color: white;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
     .bottom-footer {
       .notify-enabled {
         position: relative;

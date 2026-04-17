@@ -4442,12 +4442,13 @@
   "item.page.abstract": "Аннотация",
 
   // "item.page.author": "Author",
-  // TODO Source message changed - Revise the translation
-  "item.page.author": "Авторы",
+  "item.page.author": "Автор",
 
   // "item.page.authors": "Authors",
-  // TODO New key - Add a translation
-  "item.page.authors": "Authors",
+  "item.page.authors": "Авторы",
+
+  // "item.page.authors.others": "and others",
+  "item.page.authors.others": "и другие",
 
   // "item.page.citation": "Citation",
   "item.page.citation": "Цитирование",

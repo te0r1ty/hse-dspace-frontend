@@ -9,12 +9,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Item } from '../../../../core/shared/item.model';
 import { ViewMode } from '../../../../core/shared/view-mode.model';
 import { DsoEditMenuComponent } from '../../../../shared/dso-page/dso-edit-menu/dso-edit-menu.component';
-import { MetadataFieldWrapperComponent } from '../../../../shared/metadata-field-wrapper/metadata-field-wrapper.component';
+// import { MetadataFieldWrapperComponent } from '../../../../shared/metadata-field-wrapper/metadata-field-wrapper.component';
 import { listableObjectComponent } from '../../../../shared/object-collection/shared/listable-object/listable-object.decorator';
 import { ThemedResultsBackButtonComponent } from '../../../../shared/results-back-button/themed-results-back-button.component';
-import { ThemedThumbnailComponent } from '../../../../thumbnail/themed-thumbnail.component';
+// import { ThemedThumbnailComponent } from '../../../../thumbnail/themed-thumbnail.component';
 import { CollectionsComponent } from '../../../field-components/collections/collections.component';
-import { ThemedMediaViewerComponent } from '../../../media-viewer/themed-media-viewer.component';
+// import { ThemedMediaViewerComponent } from '../../../media-viewer/themed-media-viewer.component';
 import { MiradorViewerComponent } from '../../../mirador-viewer/mirador-viewer.component';
 import { ThemedFileSectionComponent } from '../../field-components/file-section/themed-file-section.component';
 import { ItemPageAbstractFieldComponent } from '../../field-components/specific-field/abstract/item-page-abstract-field.component';
@@ -47,15 +47,15 @@ import { ItemComponent } from '../shared/item.component';
     ItemPageCcLicenseFieldComponent,
     ItemPageDateFieldComponent,
     ItemPageUriFieldComponent,
-    MetadataFieldWrapperComponent,
+    // MetadataFieldWrapperComponent,
     MiradorViewerComponent,
     RouterLink,
     ThemedFileSectionComponent,
     ThemedItemPageTitleFieldComponent,
-    ThemedMediaViewerComponent,
+    // ThemedMediaViewerComponent,
     ThemedMetadataRepresentationListComponent,
     ThemedResultsBackButtonComponent,
-    ThemedThumbnailComponent,
+    // ThemedThumbnailComponent,
     TranslateModule,
   ],
 })
