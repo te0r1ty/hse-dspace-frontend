@@ -2905,7 +2905,7 @@
 
   "item.page.collections.load-more": "Load more",
 
-  "item.page.date": "Date",
+  "item.page.date": "Date issued",
 
   "item.page.edit": "Edit this item",
 
@@ -2989,6 +2989,8 @@
 
   "item.preview.dc.identifier.other": "Other identifier:",
 
+  "item.preview.dc.identifier.gis": "GISNauka ID:",
+
   "item.preview.dc.language.iso": "Language:",
 
   "item.preview.dc.subject": "Subjects:",
@@ -3014,8 +3016,6 @@
   "item.preview.dc.relation.ispartofseries": "Is part of series",
 
   "item.preview.dc.rights": "Rights",
-
-  "item.preview.dc.identifier.other": "Other Identifier",
 
   "item.preview.dc.relation.issn": "ISSN",
 

@@ -14,9 +14,10 @@
 }
 
 <div class="signboard">
-  <div class="d-flex flex-row p-3">
+  <div class="date-fix d-flex flex-row p-3">
     <ds-item-page-title-field [item]="object" class="me-auto align-content-center">
     </ds-item-page-title-field>
+    <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
     <ds-dso-edit-menu></ds-dso-edit-menu>
   </div>
 </div>
@@ -34,9 +35,9 @@
       </div>
     }
     -->
-    <div class="bg row justify-content-center">
-      <div class="col-6 row">
-        <div class="col-6">
+    <div class="bg">
+      <div class="col-gap d-flex">
+        <div style="flex: 3 3 0;">
           <ds-metadata-representation-list class="ds-item-page-mixed-author-field"
             [parentItem]="object"
             [itemType]="'Person'"
@@ -44,90 +45,87 @@
             [label]="'item.page.authors' | translate">
           </ds-metadata-representation-list>
         </div>
-        <div class="col-6 ">
+        <div style="flex: 2 2 0;">
           <ds-generic-item-page-field [item]="object"
             [fields]="['dc.subject']"
             [separator]="', '"
             [label]="'item.page.subject'">
           </ds-generic-item-page-field>
         </div>
-        <div class="col-6">
-          <ds-generic-item-page-field [item]="object"
-            [fields]="['dc.publisher']"
-            [label]="'item.page.publisher'">
-          </ds-generic-item-page-field>
-        </div>
-        <div class="col-6">
-          <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
+        <div style="flex: 7 7 0;">
+          <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
         </div>
       </div>
-      <div class="col-6">
-        <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
+      <div>
+
+        <ds-generic-item-page-field [item]="object"
+          [fields]="['journal.title']"
+          [label]="'item.page.journal-title'">
+        </ds-generic-item-page-field>
+        <ds-generic-item-page-field [item]="object"
+          [fields]="['journal.identifier.issn']"
+          [label]="'item.page.journal-issn'">
+        </ds-generic-item-page-field>
+        <ds-generic-item-page-field [item]="object"
+          [fields]="['journalvolume.identifier.name']"
+          [label]="'item.page.volume-title'">
+        </ds-generic-item-page-field>
+
+
+        <ds-generic-item-page-field [item]="object"
+          [fields]="['dc.description']"
+          [label]="'item.page.description'">
+        </ds-generic-item-page-field>
+        <ds-generic-item-page-field [item]="object"
+          [fields]="['dc.publisher']"
+          [label]="'item.page.publisher'">
+        </ds-generic-item-page-field>
+        <ds-item-page-file-section class="mt-4" [item]="object"></ds-item-page-file-section>
+
+
+        <ds-generic-item-page-field [item]="object"
+          [fields]="['dc.identifier.citation']"
+          [label]="'item.page.citation'">
+        </ds-generic-item-page-field>
+        @if (geospatialItemPageFieldsEnabled) {
+          <ds-geospatial-item-page-field [item]="object"
+                                        [label]="'item.page.places'"
+                                        [pointFields]="['dcterms.spatial']"
+                                        [bboxFields]="['dcterms.spatial']"
+                                        [cluster]="true"
+          >
+          </ds-geospatial-item-page-field>
+        }
+        <ds-item-page-uri-field [item]="object"
+          [fields]="['dc.identifier.uri']"
+          [label]="'item.page.uri'">
+        </ds-item-page-uri-field>
+        <ds-item-page-uri-field [item]="object"
+          [fields]="['dc.identifier.other']"
+          [label]="'item.preview.dc.identifier.gis'">
+        </ds-item-page-uri-field>
+        <ds-item-page-collections [item]="object"></ds-item-page-collections>
+        <ds-item-page-uri-field [item]="object"
+          [fields]="['coar.notify.endorsedBy']"
+          [label]="'item.page.endorsement'">
+        </ds-item-page-uri-field>
+        <ds-item-page-uri-field [item]="object"
+          [fields]="['datacite.relation.isReviewedBy']"
+          [label]="'item.page.review'">
+        </ds-item-page-uri-field>
+        <ds-item-page-uri-field [item]="object"
+          [fields]="['datacite.relation.isSupplementedBy']"
+          [label]="'item.page.supplemented'">
+        </ds-item-page-uri-field>
+        <ds-item-page-uri-field [item]="object"
+          [fields]="['datacite.relation.isReferencedBy']"
+          [label]="'item.page.referenced'">
+        </ds-item-page-uri-field>
+        <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
+        </ds-item-page-cc-license-field>
       </div>
     </div>
-    <div class="mt-4"></div>
-    <ds-item-page-file-section class="mt-4" [item]="object"></ds-item-page-file-section>
-
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['journal.title']"
-      [label]="'item.page.journal-title'">
-    </ds-generic-item-page-field>
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['journal.identifier.issn']"
-      [label]="'item.page.journal-issn'">
-    </ds-generic-item-page-field>
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['journalvolume.identifier.name']"
-      [label]="'item.page.volume-title'">
-    </ds-generic-item-page-field>
-
-
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['dc.description']"
-      [label]="'item.page.description'">
-    </ds-generic-item-page-field>
-
-
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['dc.identifier.citation']"
-      [label]="'item.page.citation'">
-    </ds-generic-item-page-field>
-    @if (geospatialItemPageFieldsEnabled) {
-      <ds-geospatial-item-page-field [item]="object"
-                                     [label]="'item.page.places'"
-                                     [pointFields]="['dcterms.spatial']"
-                                     [bboxFields]="['dcterms.spatial']"
-                                     [cluster]="true"
-      >
-      </ds-geospatial-item-page-field>
-    }
-    <ds-item-page-uri-field [item]="object"
-      [fields]="['dc.identifier.uri']"
-      [label]="'item.page.uri'">
-    </ds-item-page-uri-field>
-    <div style="background-color: white;" class="row p-0">
-      <div class="p-2">
-      <ds-item-page-collections [item]="object"></ds-item-page-collections>
-      </div>
-    </div>
-    <ds-item-page-uri-field [item]="object"
-      [fields]="['coar.notify.endorsedBy']"
-      [label]="'item.page.endorsement'">
-    </ds-item-page-uri-field>
-    <ds-item-page-uri-field [item]="object"
-      [fields]="['datacite.relation.isReviewedBy']"
-      [label]="'item.page.review'">
-    </ds-item-page-uri-field>
-    <ds-item-page-uri-field [item]="object"
-      [fields]="['datacite.relation.isSupplementedBy']"
-      [label]="'item.page.supplemented'">
-    </ds-item-page-uri-field>
-    <ds-item-page-uri-field [item]="object"
-      [fields]="['datacite.relation.isReferencedBy']"
-      [label]="'item.page.referenced'">
-    </ds-item-page-uri-field>
-    <ds-item-page-cc-license-field [item]="object" [variant]="'full'">
-    </ds-item-page-cc-license-field>
+    <div class="mt-2"></div>
     <div>
       <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="button" role="button" tabindex="0">
         <i class="fas fa-info-circle"></i> {{"item.page.link.full" | translate}}

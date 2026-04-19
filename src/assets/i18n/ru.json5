@@ -4465,8 +4465,8 @@
   // "item.page.collections.load-more": "Load more",
   "item.page.collections.load-more": "Загрузить ещё",
 
-  // "item.page.date": "Date",
-  "item.page.date": "Дата",
+  // "item.page.date": "Date issued",
+  "item.page.date": "Дата публикации",
 
   // "item.page.edit": "Edit this item",
   "item.page.edit": "Редактировать этот элемент",
@@ -4593,6 +4593,9 @@
   // "item.preview.dc.identifier.other": "Other identifier:",
   "item.preview.dc.identifier.other": "Другой идентификатор:",
 
+  // "item.preview.dc.identifier.gis": "GISNauka ID:",
+  "item.preview.dc.identifier.gis": "Идентификатор Домена науки и инноваций:",
+
   // "item.preview.dc.language.iso": "Language:",
   "item.preview.dc.language.iso": "Язык:",
 
@@ -4638,10 +4641,6 @@
   // "item.preview.dc.rights": "Rights",
   // TODO New key - Add a translation
   "item.preview.dc.rights": "Rights",
-
-  // "item.preview.dc.identifier.other": "Other Identifier",
-  // TODO Source message changed - Revise the translation
-  "item.preview.dc.identifier.other": "Другой идентификатор:",
 
   // "item.preview.dc.relation.issn": "ISSN",
   "item.preview.dc.relation.issn": "ISSN",

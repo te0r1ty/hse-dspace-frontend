@@ -6,9 +6,38 @@
   border-radius: 10px;
 }
 
+.date-fix ::ng-deep ds-item-page-date-field ds-metadata-values ds-metadata-field-wrapper div.simple-view-element {
+  margin-bottom: 0px;
+  margin-right: 20px;
+
+  div.simple-view-element-body {
+    text-align: right;
+  }
+
+  a {
+    color: white;
+    text-decoration: underline;
+
+    :hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.col-gap {
+  column-gap: 40px;
+}
+
 .bg {
   background-color: white;
   border-radius: 10px;
   margin-left: 0;
   margin-right: 0;
+  padding: 12px;
+  font-size: 18px;
+
+  & ::ng-deep h2 {
+    font-size: 23px !important;
+    font-weight: 600;
+  }
 }
