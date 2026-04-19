@@ -1,6 +1,6 @@
 <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" action="/search">
   <div class="d-flex justify-content-center">
-    <div class="h-100 w-75 mb-5 input-group">
+    <div class="h-100 w-75 mb-4 input-group">
       @if (showScopeSelector) {
         <button class="scope-button btn btn-outline-secondary text-truncate"
           [ngbTooltip]="dsoNameService.getName(selectedScope | async)" type="button"

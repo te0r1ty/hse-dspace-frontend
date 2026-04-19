@@ -21,7 +21,14 @@
   <ds-search-form [inPlaceSearch]="false"
     [searchPlaceholder]="'home.search-form.placeholder' | translate">
   </ds-search-form>
+  <div class="d-flex justify-content-center">
+    <button (click)="onLoadMore()" class="btn btn-primary btn-lg search-button" role="link" tabindex="0">
+      {{ 'vocabulary-treeview.detailed-search' | translate }}
+    </button>
+  </div>
+  <!--
   <ds-top-level-community-list></ds-top-level-community-list>
+  -->
   @if (recentSubmissionspageSize>0) {
     <ds-recent-item-list></ds-recent-item-list>
   }

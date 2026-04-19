@@ -3374,8 +3374,11 @@
   // "home.breadcrumbs": "Home",
   "home.breadcrumbs": "Главная",
 
+  // "home.logotext": "Institutional Repository of NRU HSE",
+  "home.logotext": "Институциональный репозиторий НИУ ВШЭ",
+
   // "home.search-form.placeholder": "Search the repository ...",
-  "home.search-form.placeholder": "Поиск по репозиторию ...",
+  "home.search-form.placeholder": "Поиск...",
 
   // "home.title": "Home",
   "home.title": "Главная",
@@ -9090,6 +9093,9 @@
 
   // "vocabulary-treeview.load-more": "Load more",
   "vocabulary-treeview.load-more": "Загрузить больше",
+
+  //"vocabulary-treeview.detailed-search": "Detailed search",
+  "vocabulary-treeview.detailed-search": "Подробный поиск",
 
   // "vocabulary-treeview.search.form.reset": "Reset",
   "vocabulary-treeview.search.form.reset": "Сбросить",

@@ -2205,7 +2205,9 @@
 
   "home.breadcrumbs": "Home",
 
-  "home.search-form.placeholder": "Search the repository ...",
+  "home.logotext": "Institutional repository of NRU HSE",
+
+  "home.search-form.placeholder": "Search...",
 
   "home.title": "Home",
 
@@ -5921,6 +5923,8 @@
   "vocabulary-treeview.header": "Hierarchical tree view",
 
   "vocabulary-treeview.load-more": "Load more",
+
+  "vocabulary-treeview.detailed-search": "Detailed search",
 
   "vocabulary-treeview.search.form.reset": "Reset",
 
