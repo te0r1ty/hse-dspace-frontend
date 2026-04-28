@@ -10,6 +10,10 @@
   margin-bottom: 0px;
   margin-right: 20px;
 
+  h2.simple-view-element-header {
+    text-align: right;
+  }
+
   div.simple-view-element-body {
     text-align: right;
   }
@@ -26,6 +30,21 @@
 
 .col-gap {
   column-gap: 40px;
+
+  &.d-flex.mobile-view {
+    display: block !important;
+  }
+}
+
+.hse-hr {
+  width: 95%;
+  height: 3px;
+  border-radius: 100px;
+  background-color: black;
+}
+
+.hr-mobile-view {
+  display: none !important;
 }
 
 .bg {

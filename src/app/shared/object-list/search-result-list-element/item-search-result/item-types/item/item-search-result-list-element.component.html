@@ -37,11 +37,11 @@
           <span class="lead item-list-title dont-break-out fs-4 fw-bold"
           [innerHTML]="dsoTitle"></span>
         }
-        <div class="d-flex justify-content-between my-3">
+        <div class="d-flex justify-content-between my-3" [class.flex-column]="isMobile$ | async">
           <div class="fs-5" style="flex: 2 2 0">
             @if (dso.allMetadata(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length > 0) {
               <div class="item-list-authors">
-                <b>Авторы: <br></b>
+                <b>{{ 'item.preview.dc.contributor.author' | translate }}<br></b>
                 @for (author of allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).slice(0,3); track author; let last = $last) {
                   <span>
                     <span [innerHTML]="author"><span [innerHTML]="author"></span></span>
@@ -75,7 +75,7 @@
           <div style="flex: 1 1 0;">
             @if (dso.firstMetadataValue('dc.date.issued')) {
               <div>
-                <b>Дата: <br></b>
+                <b>{{ 'item.preview.dc.date.issued.alt' | translate }}<br></b>
                 <span [innerHTML]="firstMetadataValue('dc.date.issued').replaceAll('-', '.')"></span>
               </div>
             }
@@ -83,7 +83,7 @@
           <div style="flex: 5 5 0;">
             @if (dso.firstMetadataValue('dc.description.abstract')) {
               <div>
-                <b>Аннотация: <br></b>
+                <b>{{ 'item.preview.dc.abstract.alt' | translate }}<br></b>
                 <span [innerHTML]="firstMetadataValue('dc.description.abstract').slice(0,1000)">
                 </span>
                 @if (firstMetadataValue('dc.description.abstract').length > 1000) {
@@ -99,7 +99,12 @@
                 <span
                   class="px-3 py-1 text-xs font-medium me-2 fw-bold"
                   style="color:#0050cf;background-color: #e5edfa;"
-                  [innerHTML]="subject"></span>
+                  [innerHTML]="subject"
+                  [class.mb-2] = "isMobile$ | async"></span>
+                @if (isMobile$ | async) {
+                  <br>
+                  <br>
+                }
               }
         </div>
       }

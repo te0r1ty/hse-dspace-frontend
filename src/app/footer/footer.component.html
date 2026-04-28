@@ -1,4 +1,4 @@
-<footer>
+<footer [class.footer-mobile-view]="isMobile$ | async">
   @if (showTopFooter) {
     <div class="top-footer">
       <!-- Grid container -->
@@ -49,9 +49,9 @@
   <!-- Grid container -->
 
   <div>
-    <div class="hse-footer-wrap">
+    <div class="hse-footer-wrap" [class.mobile-view]="isMobile$ | async">
       <div class="hse-footer-column">
-        <div class="hse-footer-head">О вышке</div>
+        <div class="hse-footer-head" [class.mobile-view]="isMobile$ | async">О вышке</div>
         <div class="hse-footer-link-wrap"><a class="hse-footer-link" href="https://www.hse.ru/figures/">Цифры и факты</a></div>
         <div class="hse-footer-link-wrap"><a class="hse-footer-link" href="https://www.hse.ru/orgstructure/">Руководство и структура</a></div>
         <div class="hse-footer-link-wrap"><a class="hse-footer-link" href="https://www.hse.ru/org/persons/">Преподаватели и сотрудники</a></div>
@@ -66,7 +66,7 @@
         <div class="hse-footer-link-wrap"><a class="hse-footer-link" href="https://pay.hse.ru/">Единая платежная страница</a></div>
       </div>
       <div class="hse-footer-column">
-        <div class="hse-footer-head">Образование</div>
+        <div class="hse-footer-head" [class.mobile-view]="isMobile$ | async">Образование</div>
         <div class="hse-footer-link-wrap"><a class="hse-footer-link" href="https://school.hse.ru/">Лицей</a></div>
         <div class="hse-footer-link-wrap"><a class="hse-footer-link" href="https://fdp.hse.ru/">Довузовская подготовка</a></div>
         <div class="hse-footer-link-wrap"><a class="hse-footer-link" href="https://olymp.hse.ru/">Олимпиады</a></div>
@@ -81,7 +81,7 @@
         <div class="hse-footer-link-wrap"><a class="hse-footer-link" href="http://inc.hse.ru/">Бизнес-инкубатор ВШЭ</a></div>
       </div>
       <div class="hse-footer-column">
-        <div class="hse-footer-head">Ресурсы</div>
+        <div class="hse-footer-head" [class.mobile-view]="isMobile$ | async">Ресурсы</div>
         <div class="hse-footer-link-wrap"><a class="hse-footer-link" href="https://library.hse.ru/">Библиотека</a></div>
         <div class="hse-footer-link-wrap"><a class="hse-footer-link" href="https://id.hse.ru/">Издательский дом ВШЭ</a></div>
         <div class="hse-footer-link-wrap"><a class="hse-footer-link" href="https://bookshop.hse.ru/">Книжний интернет-магазин</a></div>
@@ -96,10 +96,10 @@
     </div>
   </div>
 
-  <hr class="hse-footer-hr">
+  <hr class="hse-footer-hr" [class.mobile-view]="isMobile$ | async">
 
   <!-- Copyright -->
-  <div class="bottom-footer p-1 d-flex flex-column flex-md-row justify-content-center align-items-center text-white">
+  <div class="bottom-footer p-1 d-flex flex-column flex-md-row justify-content-center align-items-center text-white" [class.mobile-view]="isMobile$ | async">
     <div class="content-container align-self-center">
       <p class="m-0">
         <a class="text-white"

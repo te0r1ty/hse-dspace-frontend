@@ -13,7 +13,14 @@ import { TranslateModule } from '@ngx-translate/core';
 import {
   Observable,
   of,
+  fromEvent,
+  merge,
 } from 'rxjs';
+import {
+  map,
+  startWith,
+  distinctUntilChanged,
+} from 'rxjs/operators';
 
 import {
   APP_CONFIG,
@@ -38,6 +45,7 @@ import { hasValue } from '../shared/empty.util';
 })
 export class FooterComponent implements OnInit {
   dateObj: number = Date.now();
+  isMobile$: Observable<boolean>;
 
   /**
    * A boolean representing if to show or not the top footer container
@@ -63,6 +71,14 @@ export class FooterComponent implements OnInit {
     this.showEndUserAgreement = this.appConfig.info.enableEndUserAgreement;
     this.coarLdnEnabled$ = this.appConfig.info.enableCOARNotifySupport ? this.notifyInfoService.isCoarConfigEnabled() : of(false);
     this.showSendFeedback$ = this.authorizationService.isAuthorized(FeatureID.CanSendFeedback);
+
+    this.isMobile$ = merge(
+      fromEvent(window, 'resize').pipe(map(() => window.innerWidth)),
+    ).pipe(
+      startWith(window.innerWidth),
+      map((width: number) => width < 768),
+      distinctUntilChanged(),
+    );
   }
 
   openCookieSettings() {

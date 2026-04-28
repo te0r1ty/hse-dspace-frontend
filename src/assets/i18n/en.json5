@@ -2983,6 +2983,10 @@
 
   "item.preview.dc.date.issued": "Published date:",
 
+  "item.preview.dc.date.issued.alt": "Date:",
+
+  "item.preview.dc.abstract.alt": "Abstract:",
+
   "item.preview.dc.description": "Description:",
 
   "item.preview.dc.description.abstract": "Abstract:",

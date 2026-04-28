@@ -4583,6 +4583,12 @@
   // "item.preview.dc.date.issued": "Published date:",
   "item.preview.dc.date.issued": "Дата публикации:",
 
+  // "item.preview.dc.date.issued.alt": "Date:",
+  "item.preview.dc.date.issued.alt": "Дата:",
+
+  // "item.preview.dc.abstract.alt": "Abstract:",
+  "item.preview.dc.abstract.alt": "Аннотация:",
+
   // "item.preview.dc.description": "Description:",
   // TODO New key - Add a translation
   "item.preview.dc.description": "Description:",

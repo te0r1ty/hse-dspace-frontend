@@ -3,11 +3,15 @@ import {
   ChangeDetectionStrategy,
   Component,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { Observable, fromEvent, merge } from 'rxjs';
+import { map, startWith, distinctUntilChanged } from 'rxjs/operators';
 
 import { Item } from '../../../../core/shared/item.model';
 import { ViewMode } from '../../../../core/shared/view-mode.model';
+import { RouteService } from '../../../../core/services/route.service';
 import { DsoEditMenuComponent } from '../../../../shared/dso-page/dso-edit-menu/dso-edit-menu.component';
 // import { MetadataFieldWrapperComponent } from '../../../../shared/metadata-field-wrapper/metadata-field-wrapper.component';
 import { listableObjectComponent } from '../../../../shared/object-collection/shared/listable-object/listable-object.decorator';
@@ -59,4 +63,21 @@ import { ItemComponent } from '../shared/item.component';
     TranslateModule,
   ],
 })
-export class UntypedItemComponent extends ItemComponent {}
+export class UntypedItemComponent extends ItemComponent {
+  isMobile$: Observable<boolean>;
+
+  constructor(
+    protected routeService: RouteService,
+    protected router: Router,
+  ) {
+    super(routeService, router);
+
+    this.isMobile$ = merge(
+      fromEvent(window, 'resize').pipe(map(() => window.innerWidth)),
+    ).pipe(
+      startWith(window.innerWidth),
+      map((width: number) => width < 768),
+      distinctUntilChanged(),
+    );
+  }
+}

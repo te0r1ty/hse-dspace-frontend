@@ -8,6 +8,10 @@
     padding-left: 64px;
     padding-bottom: 10px;
 
+    &.footer-mobile-view {
+      padding-left: 32px !important;
+    }
+
     p {
       margin: 0;
     }
@@ -27,6 +31,11 @@
       display: flex;
       column-gap: 50px;
 
+      &.mobile-view {
+        display: block !important;
+        font-size: 18px !important;
+      }
+
       .hse-footer-column{
         flex: 1 1 0;
 
@@ -36,6 +45,10 @@
           text-align: left;
           color: white;
           margin-bottom: 16px;
+
+          &.mobile-view {
+            font-size: 24px !important;
+          }
         }
 
         .hse-footer-link-wrap{
@@ -60,9 +73,18 @@
       color: #ffffff8c;
       margin-top: 48px;
       margin-bottom: 24px;
+
+      &.mobile-view {
+        display: none !important;
+      }
     }
 
     .bottom-footer {
+
+      &.mobile-view {
+        display: none !important;
+      }
+
       .notify-enabled {
         position: relative;
         margin-top: 4px;

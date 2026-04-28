@@ -36,7 +36,7 @@
     }
     -->
     <div class="bg">
-      <div class="col-gap d-flex">
+      <div class="col-gap d-flex" [class.mobile-view]="isMobile$ | async">
         <div style="flex: 3 3 0;">
           <ds-metadata-representation-list class="ds-item-page-mixed-author-field"
             [parentItem]="object"
@@ -56,6 +56,11 @@
           <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
         </div>
       </div>
+
+      <div class="d-flex justify-content-center" [class.hr-mobile-view]="isMobile$ | async">
+        <hr class="hse-hr">
+      </div>
+
       <div>
 
         <ds-generic-item-page-field [item]="object"

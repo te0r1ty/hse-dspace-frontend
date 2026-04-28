@@ -6,6 +6,12 @@
     position: relative;
     font-weight: 600;
 
+    h1.display-3 {
+      &.mobile-view {
+        font-size: 2rem !important;
+      }
+    }
+
     .background-image > img {
       background-color: var(--bs-info);
       position: absolute;

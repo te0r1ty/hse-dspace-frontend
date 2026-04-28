@@ -6,6 +6,8 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
+import { fromEvent, merge, Observable } from 'rxjs';
+import { map, startWith, distinctUntilChanged } from 'rxjs/operators';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -43,10 +45,19 @@ export class ItemSearchResultListElementComponent extends SearchResultListElemen
    * Route to the item's page
    */
   itemPageRoute: string;
+  isMobile$: Observable<boolean>;
 
   ngOnInit(): void {
     super.ngOnInit();
     this.showThumbnails = this.showThumbnails ?? this.appConfig.browseBy.showThumbnails;
     this.itemPageRoute = getItemPageRoute(this.dso);
+
+    this.isMobile$ = merge(
+          fromEvent(window, 'resize').pipe(map(() => window.innerWidth)),
+        ).pipe(
+          startWith(window.innerWidth),
+          map((width: number) => width < 768),
+          distinctUntilChanged(),
+        );
   }
 }
