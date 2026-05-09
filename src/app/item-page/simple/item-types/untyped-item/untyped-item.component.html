@@ -14,9 +14,28 @@
 }
 
 <div class="signboard">
-  <div class="date-fix d-flex flex-row p-3">
-    <ds-item-page-title-field [item]="object" class="me-auto align-content-center">
-    </ds-item-page-title-field>
+  <div class="date-fix d-flex flex-row p-3" [class.d-flex]="!(isMobile$ | async)">
+    <div class="d-flex align-items-center me-auto">
+      <ds-item-page-title-field [item]="object" class="align-content-center">
+      </ds-item-page-title-field>
+      @if (isAuthenticated$ | async) {
+        <button class="btn btn-outline-light btn-sm ms-3"
+                (click)="addProjectToFavorites()"
+                [disabled]="isFavorited"
+                type="button">
+          <i class="fas fa-star"></i>
+          {{ isFavorited ? 'В избранном' : 'Добавить в избранное' }}
+        </button>
+      }
+      @if (!(isAuthenticated$ | async)) {
+        <button class="btn btn-outline-light btn-sm ms-3"
+                (click)="redirectToLogin()"
+                type="button">
+          <i class="fas fa-sign-in-alt"></i> Войдите, чтобы <br>
+          добавить в избранное
+        </button>
+      }
+    </div>
     <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
     <ds-dso-edit-menu></ds-dso-edit-menu>
   </div>
@@ -56,11 +75,9 @@
           <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
         </div>
       </div>
+    </div>
 
-      <div class="d-flex justify-content-center" [class.hr-mobile-view]="isMobile$ | async">
-        <hr class="hse-hr">
-      </div>
-
+    <div class="bg mt-3">
       <div>
 
         <ds-generic-item-page-field [item]="object"
@@ -101,14 +118,27 @@
           >
           </ds-geospatial-item-page-field>
         }
+
         <ds-item-page-uri-field [item]="object"
           [fields]="['dc.identifier.uri']"
           [label]="'item.page.uri'">
         </ds-item-page-uri-field>
-        <ds-item-page-uri-field [item]="object"
-          [fields]="['dc.identifier.other']"
+        <ds-generic-item-page-field [item]="object"
+          [fields]="['dc.identifier.gis']"
           [label]="'item.preview.dc.identifier.gis'">
-        </ds-item-page-uri-field>
+        </ds-generic-item-page-field>
+        <ds-generic-item-page-field [item]="object"
+          [fields]="['dc.trl']"
+          [label]="'item.preview.dc.trl'">
+        </ds-generic-item-page-field>
+        <ds-generic-item-page-field [item]="object"
+          [fields]="['dc.date.workstart']"
+          [label]="'item.preview.dc.date.workstart'">
+        </ds-generic-item-page-field>
+        <ds-generic-item-page-field [item]="object"
+          [fields]="['dc.date.workend']"
+          [label]="'item.preview.dc.date.workend'">
+        </ds-generic-item-page-field>
         <ds-item-page-collections [item]="object"></ds-item-page-collections>
         <ds-item-page-uri-field [item]="object"
           [fields]="['coar.notify.endorsedBy']"

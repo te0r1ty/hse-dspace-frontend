@@ -5,6 +5,7 @@ import {
 } from '@angular/router';
 
 import { NOTIFICATIONS_MODULE_PATH } from './admin/admin-routing-paths';
+import { ABOUT_PAGE_PATH, CONTACTS_PAGE_PATH, FAVORITES_MODULE_PATH } from './app-routing-paths';
 import {
   ACCESS_CONTROL_MODULE_PATH,
   ADMIN_MODULE_PATH,
@@ -240,6 +241,22 @@ export const APP_ROUTES: Route[] = [
       {
         path: INFO_MODULE_PATH,
         loadChildren: () => import('./info/info-routes').then((m) => m.ROUTES),
+      },
+      {
+        path: ABOUT_PAGE_PATH,
+        loadChildren: () => import('./about-page/about-page-routes')
+          .then((m) => m.ROUTES),
+      },
+      {
+        path: CONTACTS_PAGE_PATH,
+        loadChildren: () => import('./contacts-page/contacts-page-routes')
+          .then((m) => m.ROUTES),
+      },
+      {
+        path: FAVORITES_MODULE_PATH,
+        loadChildren: () => import('./favorites-page/favorites-page-routes')
+          .then((m) => m.ROUTES),
+        canActivate: [authenticatedGuard],
       },
       {
         path: REQUEST_COPY_MODULE_PATH,

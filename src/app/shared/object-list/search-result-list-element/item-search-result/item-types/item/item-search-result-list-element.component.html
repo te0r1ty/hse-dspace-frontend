@@ -42,13 +42,13 @@
             @if (dso.allMetadata(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length > 0) {
               <div class="item-list-authors">
                 <b>{{ 'item.preview.dc.contributor.author' | translate }}<br></b>
-                @for (author of allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).slice(0,3); track author; let last = $last) {
+                @for (author of allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).slice(0,6); track author; let last = $last) {
                   <span>
                     <span [innerHTML]="author"><span [innerHTML]="author"></span></span>
                     @if (!last) {
                       <span>, <br></span>
                     }
-                    @else if (allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length > 3) {
+                    @else if (allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length > 6) {
                       <br>
                       <span [innerHTML]="'item.page.authors.others' | translate"></span>
                     }

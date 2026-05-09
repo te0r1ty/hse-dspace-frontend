@@ -4601,6 +4601,12 @@
 
   // "item.preview.dc.identifier.gis": "GISNauka ID:",
   "item.preview.dc.identifier.gis": "Идентификатор Домена науки и инноваций:",
+  // "item.preview.dc.date.workstart": "Date project started:",
+  "item.preview.dc.date.workstart": "Дата начала работ:",
+  // "item.preview.dc.date.workend": "Date project ended:",
+  "item.preview.dc.date.workend": "Дата окончания работ:",
+  // "item.preview.dc.trl": "Technology Readiness level:",
+  "item.preview.dc.trl": "Уровень готовности технологий:",
 
   // "item.preview.dc.language.iso": "Language:",
   "item.preview.dc.language.iso": "Язык:",
@@ -5283,6 +5289,20 @@
   // "menu.header.admin.description": "Management menu",
   "menu.header.admin.description": "Меню управления",
 
+  // "menu.section.about": "About repository",
+  "menu.section.about": "О репозитории",
+  // "about.breadcrumbs": "About repository",
+  "about.breadcrumbs": "О репозитории",
+  // "about-page.title": "About repository",
+  "about-page.title": "О репозитории",
+
+  // "menu.section.contacts": "Contacts us",
+  "menu.section.contacts": "Контакты",
+  // "contacts.breadcrumbs": "Contact us",
+  "contacts.breadcrumbs": "Контакты",
+  // "contacts-page.title": "Contact us",
+  "contacts-page.title": "Контакты",
+
   // "menu.section.access_control": "Access Control",
   "menu.section.access_control": "Контроль доступа",
 
@@ -5322,8 +5342,8 @@
   // "menu.section.browse_community_by_title": "By Title",
   "menu.section.browse_community_by_title": "По названию",
 
-  // "menu.section.browse_global": "All of DSpace",
-  "menu.section.browse_global": "Весь DSpace",
+  // "menu.section.browse_global": "All of repository",
+  "menu.section.browse_global": "Весь репозиторий",
 
   // "menu.section.browse_global_by_author": "By Author",
   "menu.section.browse_global_by_author": "По автору",
@@ -5678,8 +5698,8 @@
   // "notification.suggestion.please": "Please",
   "notification.suggestion.please": "Пожалуйста",
 
-  // "nav.browse.header": "All of DSpace",
-  "nav.browse.header": "Весь DSpace",
+  // "nav.browse.header": "All of repository",
+  "nav.browse.header": "Весь репозиторий",
 
   // "nav.community-browse.header": "By Community",
   "nav.community-browse.header": "По сообществам",
@@ -5722,6 +5742,11 @@
 
   // "nav.subscriptions": "Subscriptions",
   "nav.subscriptions": "Подписки",
+
+  // "nav.favorites": "Favorites",
+  "nav.favorites": "Избранное",
+  "favorites.title": "Избранное",
+  "favorites.empty": "У вас пока нет избранных проектов.",
 
   // "nav.toggle": "Toggle navigation",
   "nav.toggle": "Переключить навигацию",
@@ -6824,10 +6849,9 @@
   "repository.image.logo": "Логотип репозитория",
 
   // "repository.title": "DSpace Repository",
-  "repository.title": "Репозиторий DSpace",
-
+  "repository.title": "Репозиторий НИУ ВШЭ",
   // "repository.title.prefix": "DSpace Repository :: ",
-  "repository.title.prefix": "Репозиторий DSpace :: ",
+  "repository.title.prefix": "Репозиторий НИУ ВШЭ :: ",
 
   // "resource-policies.add.button": "Add",
   "resource-policies.add.button": "Добавить",
@@ -7501,7 +7525,7 @@
   "search.form.search_dspace": "Весь репозиторий",
 
   // "search.form.scope.all": "All of DSpace",
-  "search.form.scope.all": "Весь DSpace",
+  "search.form.scope.all": "Весь репозиторий",
 
   // "search.results.head": "Search Results",
   "search.results.head": "Результаты поиска",

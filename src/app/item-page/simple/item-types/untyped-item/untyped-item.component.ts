@@ -2,17 +2,25 @@ import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { Observable, fromEvent, merge } from 'rxjs';
-import { map, startWith, distinctUntilChanged } from 'rxjs/operators';
+import { map, startWith, distinctUntilChanged, take } from 'rxjs/operators';
 
+import { environment } from '../../../../../environments/environment';
 import { Item } from '../../../../core/shared/item.model';
 import { ViewMode } from '../../../../core/shared/view-mode.model';
 import { RouteService } from '../../../../core/services/route.service';
 import { DsoEditMenuComponent } from '../../../../shared/dso-page/dso-edit-menu/dso-edit-menu.component';
+import { AuthService } from '../../../../core/auth/auth.service';
+import { DspaceRestService } from '../../../../core/dspace-rest/dspace-rest.service';
+import { RestRequestMethod } from '../../../../core/data/rest-request-method';
 // import { MetadataFieldWrapperComponent } from '../../../../shared/metadata-field-wrapper/metadata-field-wrapper.component';
 import { listableObjectComponent } from '../../../../shared/object-collection/shared/listable-object/listable-object.decorator';
 import { ThemedResultsBackButtonComponent } from '../../../../shared/results-back-button/themed-results-back-button.component';
@@ -63,14 +71,20 @@ import { ItemComponent } from '../shared/item.component';
     TranslateModule,
   ],
 })
-export class UntypedItemComponent extends ItemComponent {
+export class UntypedItemComponent extends ItemComponent implements OnInit, OnChanges {
   isMobile$: Observable<boolean>;
+  isAuthenticated$: Observable<boolean>;
+  isFavorited = false;
 
   constructor(
     protected routeService: RouteService,
     protected router: Router,
+    protected authService: AuthService,
+    protected restService: DspaceRestService,
   ) {
     super(routeService, router);
+
+    this.isAuthenticated$ = this.authService.isAuthenticated();
 
     this.isMobile$ = merge(
       fromEvent(window, 'resize').pipe(map(() => window.innerWidth)),
@@ -79,5 +93,97 @@ export class UntypedItemComponent extends ItemComponent {
       map((width: number) => width < 768),
       distinctUntilChanged(),
     );
+  }
+
+
+  ngOnInit(): void {
+    super.ngOnInit();
+    this.loadFavoriteStatus();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.object && this.object?.id) {
+      this.loadFavoriteStatus();
+    }
+  }
+
+  private loadFavoriteStatus(): void {
+    if (!this.object?.id) {
+      return;
+    }
+
+    this.authService.getAuthenticatedUserIdFromStore().pipe(
+      take(1),
+    ).subscribe((userId: string) => {
+      if (!userId) {
+        this.isFavorited = false;
+        return;
+      }
+
+      const favoritesUrl = `${environment.rest.baseUrl}/api/favorites`;
+      const body = {
+        userID: userId,
+        projectID: this.object.id,
+      };
+      const options = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' }),
+        withCredentials: true,
+      };
+
+      this.restService.request(
+        RestRequestMethod.GET,
+        favoritesUrl,
+        body,
+        options,
+      ).subscribe({
+        next: (response) => {
+          const payload = response?.payload as unknown;
+          this.isFavorited = payload === true;
+        },
+        error: (error) => {
+          console.error('Error checking favorite status', error);
+          this.isFavorited = false;
+        },
+      });
+    });
+  }
+
+  addProjectToFavorites(): void {
+    this.authService.getAuthenticatedUserIdFromStore().pipe(
+      take(1),
+    ).subscribe((userId: string) => {
+      if (userId && this.object?.id) {
+        const body = {
+          userID: userId,
+          projectID: this.object.id,
+        };
+        const options = {
+          headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' }),
+          withCredentials: true,
+        };
+        const favoritesUrl = `${environment.rest.baseUrl}/api/favorites`;
+
+        this.restService.request(
+          RestRequestMethod.PUT,
+          favoritesUrl,
+          body,
+          options,
+        ).subscribe({
+          next: () => {
+            console.log('Project added to favorites');
+            this.loadFavoriteStatus();
+          },
+          error: (error) => {
+            console.error('Error adding favorite project', error);
+          },
+        });
+      } else {
+        this.authService.redirectToLogin();
+      }
+    });
+  }
+
+  redirectToLogin(): void {
+    this.authService.redirectToLogin();
   }
 }

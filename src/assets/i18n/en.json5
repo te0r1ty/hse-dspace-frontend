@@ -1793,7 +1793,7 @@
 
   "dso-selector.set-scope.community.head": "Select a search scope",
 
-  "dso-selector.set-scope.community.button": "Search all of DSpace",
+  "dso-selector.set-scope.community.button": "Search all of repository",
 
   "dso-selector.set-scope.community.or-divider": "or",
 
@@ -2995,6 +2995,12 @@
 
   "item.preview.dc.identifier.gis": "GISNauka ID:",
 
+  "item.preview.dc.date.workstart": "Date project started:",
+
+  "item.preview.dc.date.workend": "Date project ended:",
+
+  "item.preview.dc.trl": "Technology Readiness level:",
+
   "item.preview.dc.language.iso": "Language:",
 
   "item.preview.dc.subject": "Subjects:",
@@ -3437,6 +3443,18 @@
 
   "menu.header.admin.description": "Management menu",
 
+  "menu.section.about": "About repository",
+
+  "about.breadcrumbs": "About repository",
+
+  "about-page.title": "About repository",
+
+  "menu.section.contacts": "Contacts us",
+
+  "contacts.breadcrumbs": "Contact us",
+
+  "contacts-page.title": "Contact us",
+
   "menu.section.access_control": "Access Control",
 
   "menu.section.access_control_authorizations": "Authorizations",
@@ -3463,7 +3481,7 @@
 
   "menu.section.browse_community_by_title": "By Title",
 
-  "menu.section.browse_global": "All of DSpace",
+  "menu.section.browse_global": "All of repository",
 
   "menu.section.browse_global_by_author": "By Author",
 
@@ -3699,7 +3717,7 @@
 
   "notification.suggestion.please": "Please",
 
-  "nav.browse.header": "All of DSpace",
+  "nav.browse.header": "All of repository",
 
   "nav.community-browse.header": "By Community",
 
@@ -3728,6 +3746,10 @@
   "nav.stop-impersonating": "Stop impersonating EPerson",
 
   "nav.subscriptions": "Subscriptions",
+
+  "nav.favorites": "Favorites",
+  "favorites.title": "Favorites",
+  "favorites.empty": "You have no favorite items yet.",
 
   "nav.toggle": "Toggle navigation",
 
@@ -4437,9 +4459,9 @@
 
   "repository.image.logo": "Repository logo",
 
-  "repository.title": "DSpace Repository",
+  "repository.title": "NRU HSE Repository",
 
-  "repository.title.prefix": "DSpace Repository :: ",
+  "repository.title.prefix": "NRU HSE Repository :: ",
 
   "resource-policies.add.button": "Add",
 
@@ -4880,7 +4902,7 @@
 
   "search.form.search_dspace": "All repository",
 
-  "search.form.scope.all": "All of DSpace",
+  "search.form.scope.all": "All of repository",
 
   "search.results.head": "Search Results",
 

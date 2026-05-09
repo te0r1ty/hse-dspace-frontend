@@ -1,5 +1,7 @@
 import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { fromEvent, merge, Observable } from 'rxjs';
+import { map, startWith, distinctUntilChanged } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
@@ -22,4 +24,15 @@ import { BrowserOnlyPipe } from '../../../../../app/shared/utils/browser-only.pi
   ],
 })
 export class SearchFormComponent extends BaseComponent {
+  isMobile$: Observable<boolean>;
+
+  ngOnInit(): void {
+    this.isMobile$ = merge(
+          fromEvent(window, 'resize').pipe(map(() => window.innerWidth)),
+        ).pipe(
+          startWith(window.innerWidth),
+          map((width: number) => width < 768),
+          distinctUntilChanged(),
+        );
+  }
 }

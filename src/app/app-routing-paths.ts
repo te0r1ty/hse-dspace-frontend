@@ -150,6 +150,19 @@ export function getRequestCopyModulePath() {
 
 export const HEALTH_PAGE_PATH = 'health';
 
+export const ABOUT_PAGE_PATH = 'about';
+export function getAboutPageRoute() {
+  return `/${ABOUT_PAGE_PATH}`;
+}
+export const CONTACTS_PAGE_PATH = 'contacts';
+export function getContactsPageRoute() {
+  return `/${CONTACTS_PAGE_PATH}`;
+}
+export const FAVORITES_MODULE_PATH = 'favorites';
+export function getFavoritesModuleRoute() {
+  return `/${FAVORITES_MODULE_PATH}`;
+}
+
 export const SUBSCRIPTIONS_MODULE_PATH = 'subscriptions';
 
 export function getSubscriptionsModuleRoute() {

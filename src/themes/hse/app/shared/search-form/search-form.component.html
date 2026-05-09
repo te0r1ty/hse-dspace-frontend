@@ -10,7 +10,7 @@
       }
       <input type="text" [(ngModel)]="query" name="query" class="form-control form-custom-style"
         [attr.aria-label]="searchPlaceholder" [attr.data-test]="'search-box' | dsBrowserOnly"
-        [placeholder]="searchPlaceholder" tabindex="0">
+        [placeholder]="searchPlaceholder" tabindex="0" [class.form-suctom-style-mobile]="isMobile$ | async">
       <button type="submit" class="search-button btn btn-primary" [attr.data-test]="'search-button' | dsBrowserOnly" role="button" tabindex="0"><i class="fas fa-search"></i></button>
     </div>
   </div>

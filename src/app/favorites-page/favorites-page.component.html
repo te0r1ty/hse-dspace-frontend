@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>{{ 'favorites.title' | translate }}</h1>
+
+  <ds-loading *ngIf="loading$ | async"></ds-loading>
+
+  @if ((favorites$ | async)?.length > 0 && (loading$ | async) !== true) {
+    <div class="favorites-list">
+      @for (favorite of favorites$ | async; track $index) {
+        <div class="favorite-item">
+          <div class="favorite-item-label">{{ getLabel(favorite) }}</div>
+        </div>
+      }
+    </div>
+  }
+
+  @if ((favorites$ | async)?.length === 0 && (loading$ | async) !== true) {
+    <div class="favorites-empty">
+      {{ 'favorites.empty' | translate }}
+    </div>
+  }
+</div>

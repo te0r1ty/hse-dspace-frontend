@@ -22,6 +22,7 @@ import { Observable } from 'rxjs';
 
 import { AppState } from '../../../app.reducer';
 import {
+  getFavoritesModuleRoute,
   getProfileModuleRoute,
   getSubscriptionsModuleRoute,
 } from '../../../app-routing-paths';
@@ -89,6 +90,11 @@ export class UserMenuComponent implements OnInit {
    * The profile page route
    */
   public subscriptionsRoute = getSubscriptionsModuleRoute();
+
+  /**
+   * The favorites page route
+   */
+  public favoritesRoute = getFavoritesModuleRoute();
 
   constructor(
     protected store: Store<AppState>,

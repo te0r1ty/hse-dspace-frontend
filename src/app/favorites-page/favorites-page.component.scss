@@ -1,0 +1,25 @@
+.favorites-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.favorite-item {
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  background: #fff;
+}
+
+.favorite-item-label {
+  font-weight: 600;
+}
+
+.favorite-item-json {
+  margin-top: 0.75rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.favorites-empty {
+  color: #6c757d;
+}
