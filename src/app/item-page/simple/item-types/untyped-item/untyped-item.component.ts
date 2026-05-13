@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
-import { Observable, fromEvent, merge } from 'rxjs';
+import { BehaviorSubject, Observable, fromEvent, merge } from 'rxjs';
 import { map, startWith, distinctUntilChanged, take } from 'rxjs/operators';
 
 import { environment } from '../../../../../environments/environment';
@@ -74,7 +74,8 @@ import { ItemComponent } from '../shared/item.component';
 export class UntypedItemComponent extends ItemComponent implements OnInit, OnChanges {
   isMobile$: Observable<boolean>;
   isAuthenticated$: Observable<boolean>;
-  isFavorited = false;
+  isFavorited$ = new BehaviorSubject<boolean>(false);
+  isFavoriteRequestPending$ = new BehaviorSubject<boolean>(false);
 
   constructor(
     protected routeService: RouteService,
@@ -116,35 +117,56 @@ export class UntypedItemComponent extends ItemComponent implements OnInit, OnCha
       take(1),
     ).subscribe((userId: string) => {
       if (!userId) {
-        this.isFavorited = false;
+        this.isFavorited$.next(false);
         return;
       }
 
-      const favoritesUrl = `${environment.rest.baseUrl}/api/favorites`;
-      const body = {
-        userID: userId,
-        projectID: this.object.id,
-      };
-      const options = {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' }),
-        withCredentials: true,
-      };
+      const favoritesUrl = `${environment.rest.baseUrl}/api/favorites?userID=${userId}&itemID=${this.object.id}`;
 
-      this.restService.request(
-        RestRequestMethod.GET,
-        favoritesUrl,
-        body,
-        options,
-      ).subscribe({
+      this.restService.get(favoritesUrl).subscribe({
         next: (response) => {
           const payload = response?.payload as unknown;
-          this.isFavorited = payload === true;
+          this.isFavorited$.next(payload === true);
         },
         error: (error) => {
           console.error('Error checking favorite status', error);
-          this.isFavorited = false;
+          this.isFavorited$.next(false);
         },
       });
+    });
+  }
+
+  removeProjectFromFavorites(): void {
+    this.authService.getAuthenticatedUserIdFromStore().pipe(
+      take(1),
+    ).subscribe((userId: string) => {
+      if (userId && this.object?.id) {
+        const options = {
+          withCredentials: true,
+        };
+        const favoritesUrl = `${environment.rest.baseUrl}/api/favorites?userID=${userId}&itemID=${this.object.id}`;
+
+        this.isFavoriteRequestPending$.next(true);
+
+        this.restService.request(
+          RestRequestMethod.DELETE,
+          favoritesUrl,
+          null,
+          options,
+        ).subscribe({
+          next: () => {
+            console.log('Project removed from favorites');
+            this.isFavorited$.next(false);
+            this.isFavoriteRequestPending$.next(false);
+          },
+          error: (error) => {
+            console.error('Error removing favorite project', error);
+            this.isFavoriteRequestPending$.next(false);
+          },
+        });
+      } else {
+        this.authService.redirectToLogin();
+      }
     });
   }
 
@@ -155,13 +177,15 @@ export class UntypedItemComponent extends ItemComponent implements OnInit, OnCha
       if (userId && this.object?.id) {
         const body = {
           userID: userId,
-          projectID: this.object.id,
+          itemID: this.object.id,
         };
         const options = {
           headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' }),
           withCredentials: true,
         };
         const favoritesUrl = `${environment.rest.baseUrl}/api/favorites`;
+
+        this.isFavoriteRequestPending$.next(true);
 
         this.restService.request(
           RestRequestMethod.PUT,
@@ -171,10 +195,12 @@ export class UntypedItemComponent extends ItemComponent implements OnInit, OnCha
         ).subscribe({
           next: () => {
             console.log('Project added to favorites');
-            this.loadFavoriteStatus();
+            this.isFavorited$.next(true);
+            this.isFavoriteRequestPending$.next(false);
           },
           error: (error) => {
             console.error('Error adding favorite project', error);
+            this.isFavoriteRequestPending$.next(false);
           },
         });
       } else {

@@ -19,13 +19,23 @@
       <ds-item-page-title-field [item]="object" class="align-content-center">
       </ds-item-page-title-field>
       @if (isAuthenticated$ | async) {
+        @if (isFavorited$ | async) {
         <button class="btn btn-outline-light btn-sm ms-3"
-                (click)="addProjectToFavorites()"
-                [disabled]="isFavorited"
+                (click)="removeProjectFromFavorites()"
+                [disabled]="isFavoriteRequestPending$ | async"
                 type="button">
           <i class="fas fa-star"></i>
-          {{ isFavorited ? 'В избранном' : 'Добавить в избранное' }}
+          В избранном
         </button>
+      } @else {
+        <button class="btn btn-outline-light btn-sm ms-3"
+                (click)="addProjectToFavorites()"
+                [disabled]="isFavoriteRequestPending$ | async"
+                type="button">
+          <i class="fas fa-star"></i>
+          Добавить в избранное
+        </button>
+      }
       }
       @if (!(isAuthenticated$ | async)) {
         <button class="btn btn-outline-light btn-sm ms-3"
